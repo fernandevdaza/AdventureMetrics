@@ -1,27 +1,15 @@
-from models.SalesOrderDetail import SalesOrderDetail
-from models.SalesOrderHeader import SalesOrderHeader
-from models.Product import Product
-from db.connection import session
-from sqlalchemy import func
 import pandas as pd
 from matplotlib import pyplot as plt
+from models.SalesReport import SalesReport
 
 
-query = session.query(
-    SalesOrderDetail.productid,
-    Product.name,
-    func.sum(SalesOrderDetail.orderqty)
-).join(SalesOrderHeader, SalesOrderDetail.salesorderid == SalesOrderHeader.salesorderid
-).join(Product, SalesOrderDetail.productid == Product.productid
-).filter(
-    SalesOrderHeader.orderdate.between('2012-01-01 00:00:00', '2012-12-31 23:59:59')
-).group_by(
-    SalesOrderDetail.productid,
-    Product.name
-).order_by(
-    func.sum(SalesOrderDetail.orderqty).desc()
-).all()
 
-df = pd.DataFrame(query, columns=['productid', 'name', 'total'])
+print("Generando reporte de ventas...")
+reporteProductos = SalesReport()
+df = reporteProductos.get_best_selling_products(2011)
 
-print(df.head())
+print(df.head(20))
+
+## Generar grafico
+df.head(20).plot(kind='bar', x='name', y='total')
+plt.show()
