@@ -9,7 +9,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+conectar.bat
 # Distribution / packaging
 .Python
 build/
