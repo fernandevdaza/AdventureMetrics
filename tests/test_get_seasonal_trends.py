@@ -1,5 +1,4 @@
 import pandas as pd
-from matplotlib import pyplot as plt
 from controllers.ControllerSeasonalTrends import ControllerSeasonalTrends
 
 def test_get_seasonal_trends():
