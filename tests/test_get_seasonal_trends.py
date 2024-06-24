@@ -1,6 +1,6 @@
 import pandas as pd
 from matplotlib import pyplot as plt
-from controllers.SalesReportController import SalesReportController
+from controllers.ControllerSeasonalTrends import ControllerSeasonalTrends
 
 def test_get_seasonal_trends():
     try:
@@ -18,7 +18,7 @@ def test_get_seasonal_trends():
             limit = int(input("Ingrese el número de productos a mostrar: "))
         else:
             limit = None
-        controller = SalesReportController()
+        controller = ControllerSeasonalTrends()
         df = controller.get_seasonal_trends_by_quarter(year, quarter, limit)
         print(df)
     except ValueError as e:
