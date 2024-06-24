@@ -10,7 +10,10 @@ class SalesReport:
         self.session.execute(text("SET lc_time = 'es_ES.UTF-8'"))
 
     def get_date_range(self):
-        """Obtiene el rango de fechas de las ventas en la base de datos."""
+        """
+        Obtiene el rango de fechas de las ventas en la base de datos.
+        :return: Tupla con la fecha de inicio y fin de las ventas.
+        """
         try:
             start_date = self.session.query(func.min(SalesOrderHeader.orderdate)).scalar()
             end_date = self.session.query(func.max(SalesOrderHeader.orderdate)).scalar()
@@ -19,7 +22,11 @@ class SalesReport:
             raise Exception(f"Error al obtener el rango de fechas: {e}")
 
     def has_data_for_quarter(self, year, quarter):
-        """Verifica si hay datos para el año y trimestre especificados."""
+        """
+        Verifica si hay datos para el año y trimestre especificados.
+        :param year: Año a verificar.
+        :param quarter: Trimestre a verificar.
+        """
         try:
             quarter_start_month = (quarter - 1) * 3 + 1
             quarter_end_month = quarter * 3
@@ -75,7 +82,12 @@ class SalesReport:
         return df
     
     def get_seasonal_trends_by_quarter(self, year, quarter=None, limit=None):
-        """Obtiene el top de productos por trimestre de la base de datos para un año específico."""
+        """
+        Obtiene el top de productos por trimestre de la base de datos para un año específico.
+        :param year: Año a consultar.
+        :param quarter: Trimestre a consultar.
+        :param limit: Número de productos a mostrar.
+        """
         try:
             year_start_date = str(year) + '-01-01 00:00:00'
             year_end_date = str(year) + '-12-31 23:59:59'

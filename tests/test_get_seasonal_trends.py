@@ -1,4 +1,3 @@
-# Archivo para probar el método de seasonal trends
 import pandas as pd
 from matplotlib import pyplot as plt
 from controllers.SalesReportController import SalesReportController
@@ -19,7 +18,6 @@ def test_get_seasonal_trends():
             limit = int(input("Ingrese el número de productos a mostrar: "))
         else:
             limit = None
-
         controller = SalesReportController()
         df = controller.get_seasonal_trends_by_quarter(year, quarter, limit)
         print(df)
@@ -28,4 +26,5 @@ def test_get_seasonal_trends():
     except Exception as e:
         print(f"Se produjo un error: {e}")
     finally:
-        controller.close()
+        if controller is not None:
+            controller.close()
