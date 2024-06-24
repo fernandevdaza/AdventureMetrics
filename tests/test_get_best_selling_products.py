@@ -1,6 +1,6 @@
 import pandas as pd
 from matplotlib import pyplot as plt
-from controllers.SalesReportController import SalesReportController
+from controllers.ControllerBestSellingProducts import ControllerBestSellingProducts
 
 def test_get_best_selling_products():
     try:
@@ -12,7 +12,7 @@ def test_get_best_selling_products():
         else:
             limit = None
 
-        controller = SalesReportController()
+        controller = ControllerBestSellingProducts()
         df = controller.get_best_selling_products(year, limit)
         print(df)
     except ValueError as e:

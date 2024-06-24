@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 from dotenv import dotenv_values
 
 config = dotenv_values(".env")
@@ -12,9 +11,5 @@ def get_engine():
 
 
 Base = declarative_base()
-
-# Crea el motor de conexión
-
-SessionLocal = sessionmaker(autoflush=False, bind=get_engine())
 
 
