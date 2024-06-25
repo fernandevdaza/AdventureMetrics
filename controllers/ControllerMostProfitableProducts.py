@@ -23,6 +23,10 @@ class ControllerMostProfitableProducts(SalesReportController):
                 raise ValueError("No se encontraron productos vendidos para el año especificado.")
             
             return df
+        
+        def save_to_excel(self, df, name):
+            """Guarda el reporte en un archivo Excel."""
+            self.report_model.save_to_excel(df, name)
      
         def close(self):
             """Método para cerrar la sesión."""

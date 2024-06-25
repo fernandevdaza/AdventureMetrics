@@ -43,4 +43,6 @@ class ReportMostProfitableProducts(SalesReport):
             return df
         except Exception as e:
             raise Exception(f"Error al obtener los productos más rentables: {e}")
-    
+        
+    def save_to_excel(self, df, name):
+            super().save_to_excel(df, name)

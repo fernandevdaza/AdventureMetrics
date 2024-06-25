@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy import func, text
 from db.schema import SalesOrderHeader
-
+import os
 class SalesReport:
 
     def __init__(self, session):
@@ -43,6 +43,23 @@ class SalesReport:
             return result is not None
         except Exception as e:
             raise Exception(f"Error al verificar datos para el trimestre: {e}") 
+        
+    def save_to_excel(self, df, name):
+        """
+        Guarda el dataframe en un archivo Excel.
+        :param df: Dataframe a guardar.
+        """
+        folder_path = 'reports'
+        if not os.path.exists('reports'):
+            os.makedirs('reports')
+
+        file_path = os.path.join(folder_path, f"{name}.xlsx")
+        try:
+            df.to_excel(file_path, index=False)
+            print(f"Archivo guardado exitosamente en: {file_path}")
+        except Exception as e:
+            raise Exception(f"Error al guardar el archivo Excel: {e}")
+
     
     def close(self):
         self.session.close()

@@ -54,6 +54,10 @@ class ReportSeasonalTrends(SalesReport):
                 df = df.groupby('quarter').head(limit).reset_index(drop=True)
             
             return df
+
         except Exception as e:
             raise Exception(f"Error al obtener las tendencias trimestrales: {e}")
+        
+    def save_to_excel(self, df, name):
+            super().save_to_excel(df, name)
     

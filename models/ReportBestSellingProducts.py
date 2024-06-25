@@ -44,4 +44,6 @@ class ReportBestSellingProducts(SalesReport):
         df = pd.DataFrame(results, columns=['productid', 'name', 'total'])
         return df
     
+    def save_to_excel(self, df, name):
+            super().save_to_excel(df, name)
     

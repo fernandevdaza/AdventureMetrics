@@ -12,8 +12,20 @@ def test_get_best_selling_products(session):
             limit = int(input("Ingrese el número de productos a mostrar: "))
         else:
             limit = None
+
         df = controller.get_best_selling_products(year, limit)
 
+        if limit == None:
+            print("Se guardará su reporte en un archivo Excel.")
+            controller.save_to_excel(df, 'best_selling_products')
+        else:
+            print(df)
+            save_to_excel = input("¿Desea guardar el reporte en un archivo Excel? (s/n): ")
+            if save_to_excel.lower() == 's':
+                controller.save_to_excel(df, 'best_selling_products')
+            else:
+                pass
+            
         print("\n")
         show_plot = input("¿Desea mostrar el gráfico de tendencias trimestrales? (s/n): ")
         if show_plot.lower() == 's':
@@ -22,7 +34,6 @@ def test_get_best_selling_products(session):
             plotter.plot_best_selling_products(df, year, limit)
         else:
             return
-        print(df)
     except ValueError as e:
         print(f"Valor inválido: {e}")
     except Exception as e:
