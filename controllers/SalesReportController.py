@@ -3,8 +3,8 @@ from datetime import datetime
 
 class SalesReportController:
     
-    def __init__(self):
-        self.report_model = SalesReport()
+    def __init__(self, session, report_model):
+        self.report_model = report_model(session)
 
 
     def _is_valid_date(self, year, quarter=None):

@@ -1,15 +1,11 @@
 import pandas as pd
-from sqlalchemy.orm import sessionmaker
-from db.connection import get_engine
-from sqlalchemy import func, text, case
-from db.schema import SalesOrderDetail, SalesOrderHeader, Product
+from sqlalchemy import func, text
+from db.schema import SalesOrderHeader
 
 class SalesReport:
 
-    def __init__(self):
-        self.engine = get_engine()
-        Session = sessionmaker(bind=self.engine)
-        self.session = Session()
+    def __init__(self, session):
+        self.session = session
         self.session.execute(text("SET lc_time = 'es_ES.UTF-8'"))
 
     def get_date_range(self):

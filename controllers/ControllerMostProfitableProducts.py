@@ -3,9 +3,8 @@ from datetime import datetime
 from models.ReportMostProfitableProducts import ReportMostProfitableProducts
  
 class ControllerMostProfitableProducts(SalesReportController):
-        def __init__(self):
-            super().__init__()
-            self.report_model = ReportMostProfitableProducts()
+        def __init__(self, session):
+            super().__init__(session, ReportMostProfitableProducts)
      
         def get_most_profitable_products(self, year, limit=None):
             """

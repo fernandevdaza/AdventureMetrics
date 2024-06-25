@@ -3,9 +3,8 @@ from datetime import datetime
 from models.ReportSeasonalTrends import ReportSeasonalTrends
 
 class ControllerSeasonalTrends(SalesReportController):
-        def __init__(self):
-            super().__init__()
-            self.report_model = ReportSeasonalTrends()
+        def __init__(self, session):
+            super().__init__(session, ReportSeasonalTrends)
     
         def get_seasonal_trends_by_quarter(self, year, quarter=None, limit=None):
             """

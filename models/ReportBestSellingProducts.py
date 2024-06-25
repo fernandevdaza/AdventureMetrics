@@ -5,8 +5,8 @@ import pandas as pd
 
 class ReportBestSellingProducts(SalesReport):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, session):
+        super().__init__(session)
 
     def get_best_selling_products(self, year, limit=None):
         """
