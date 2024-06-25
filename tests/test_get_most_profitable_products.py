@@ -1,5 +1,6 @@
 import pandas as pd
 from controllers.ControllerMostProfitableProducts import ControllerMostProfitableProducts
+from models.PlotMostProfitableProducts import PlotMostProfitableProducts
 
 def test_get_most_profitable_products():
     try:
@@ -14,6 +15,12 @@ def test_get_most_profitable_products():
         controller = ControllerMostProfitableProducts()
         df = controller.get_most_profitable_products(year, limit)
         print(df)
+        print("\n")
+        show_plot = input("¿Desea mostrar el gráfico de los productos mas rentables? (s/n): ")
+        if show_plot.lower() =='s':
+            limit = int(input("Ingrese el número de productos a mostrar en el gráfico (Max: 20): "))
+            plotter = PlotMostProfitableProducts()
+            plotter.plot_pie_chart(df, limit)
     except ValueError as e:
         print(f"Valor inválido: {e}")
     except Exception as e:
