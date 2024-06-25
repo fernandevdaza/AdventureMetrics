@@ -6,13 +6,16 @@ class PlotMostProfitableProducts (SalesPlotter):
     def __init__(self) -> None:
         super().__init__()
     
-    def plot_pie_chart(self, year, limit=20):
+    def plot_pie_chart(self, df, year, limit=20):
         try:
-            df = self.get_most_profitable_products(year, limit)
+            df = self.limit_rows(df, limit)
             if df.empty:
                 print("No hay datos para mostrar.")
                 return
-            df['percentage'] = (df['total_revenue'] / df['total_revenue'].sum()) * 100
+            
+            total_revenue_sum = df['total_revenue'].sum()
+            df.loc[:, 'percentage'] = (df['total_revenue'] / total_revenue_sum) * 100
+
 
             plt.figure(figsize=(10, 8))
             plt.pie(df['percentage'], labels=df['product_name'], autopct='%1.1f%%', startangle=140)

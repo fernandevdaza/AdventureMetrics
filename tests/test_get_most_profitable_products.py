@@ -20,7 +20,7 @@ def test_get_most_profitable_products():
         if show_plot.lower() =='s':
             limit = int(input("Ingrese el número de productos a mostrar en el gráfico (Max: 20): "))
             plotter = PlotMostProfitableProducts()
-            plotter.plot_pie_chart(df, limit)
+            plotter.plot_pie_chart(df, year, limit)
     except ValueError as e:
         print(f"Valor inválido: {e}")
     except Exception as e:
