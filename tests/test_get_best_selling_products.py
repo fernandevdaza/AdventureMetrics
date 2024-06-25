@@ -1,6 +1,6 @@
 import pandas as pd
 from controllers.ControllerBestSellingProducts import ControllerBestSellingProducts
-
+from models.PlotBestSellingProducts import PlotBestSellingProducts
 def test_get_best_selling_products():
     try:
         year = int(input("Ingrese el año a consultar: "))
@@ -12,7 +12,17 @@ def test_get_best_selling_products():
             limit = None
 
         controller = ControllerBestSellingProducts()
+
         df = controller.get_best_selling_products(year, limit)
+
+        print("\n")
+        show_plot = input("¿Desea mostrar el gráfico de tendencias trimestrales? (s/n): ")
+        if show_plot.lower() == 's':
+            limit = int(input("Ingrese el número de productos a mostrar en el gráfico (Max: 20): "))
+            plotter = PlotBestSellingProducts()
+            plotter.plot_best_selling_products(df, year, limit)
+        else:
+            return
         print(df)
     except ValueError as e:
         print(f"Valor inválido: {e}")

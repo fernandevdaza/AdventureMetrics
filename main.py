@@ -1,3 +1,3 @@
-from tests.test_get_seasonal_trends import test_get_seasonal_trends
+from tests.test_get_best_selling_products import test_get_best_selling_products
 
-test_get_seasonal_trends()
+test_get_best_selling_products()
