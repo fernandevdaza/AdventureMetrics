@@ -4,9 +4,8 @@ from models.ReportBestSellingProducts import ReportBestSellingProducts
  
 class ControllerBestSellingProducts(SalesReportController):
 
-    def __init__(self):
-        super().__init__()
-        self.report_model = ReportBestSellingProducts()
+    def __init__(self, session):
+        super().__init__(session, ReportBestSellingProducts)
 
     def get_best_selling_products(self, year, limit=None):
         """

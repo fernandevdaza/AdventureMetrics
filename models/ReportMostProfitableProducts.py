@@ -4,8 +4,8 @@ from sqlalchemy import func, case
 import pandas as pd
 
 class ReportMostProfitableProducts(SalesReport):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, session):
+        super().__init__(session)
     
     def get_most_profitable_products(self, year, limit=None):
         """

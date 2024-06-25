@@ -1,8 +1,9 @@
 import pandas as pd
 from controllers.ControllerBestSellingProducts import ControllerBestSellingProducts
 
-def test_get_best_selling_products():
+def test_get_best_selling_products(session):
     try:
+        controller = ControllerBestSellingProducts(session)
         year = int(input("Ingrese el año a consultar: "))
         is_limited = input("¿Desea limitar el número de productos a mostrar? (s/n): ")
         
@@ -10,8 +11,6 @@ def test_get_best_selling_products():
             limit = int(input("Ingrese el número de productos a mostrar: "))
         else:
             limit = None
-
-        controller = ControllerBestSellingProducts()
         df = controller.get_best_selling_products(year, limit)
         print(df)
     except ValueError as e:

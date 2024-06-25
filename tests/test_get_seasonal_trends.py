@@ -1,8 +1,10 @@
 import pandas as pd
 from controllers.ControllerSeasonalTrends import ControllerSeasonalTrends
 from models.PlotSeasonalTrends import PlotSeasonalTrends
-def test_get_seasonal_trends():
+
+def test_get_seasonal_trends(session):
     try:
+        controller = ControllerSeasonalTrends(session)
         year = int(input("Ingrese el año a consultar: "))
         filter_by_quarter = input("¿Desea filtrar por trimestre? (s/n): ")
 
@@ -17,10 +19,8 @@ def test_get_seasonal_trends():
             limit = int(input("Ingrese el número de productos a mostrar: "))
         else:
             limit = None
-        controller = ControllerSeasonalTrends()
         df = controller.get_seasonal_trends_by_quarter(year, quarter, limit)
         print(df)
-
         print("\n")
         show_plot = input("¿Desea mostrar el gráfico de tendencias trimestrales? (s/n): ")
         if show_plot.lower() == 's':

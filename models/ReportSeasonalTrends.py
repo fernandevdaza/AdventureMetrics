@@ -3,8 +3,8 @@ from db.schema import SalesOrderDetail, SalesOrderHeader, Product
 from sqlalchemy import func, case
 import pandas as pd
 class ReportSeasonalTrends(SalesReport):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, session):
+        super().__init__(session)
     
     def get_seasonal_trends_by_quarter(self, year, quarter=None, limit=None):
         """

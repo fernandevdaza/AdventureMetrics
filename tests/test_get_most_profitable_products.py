@@ -2,8 +2,9 @@ import pandas as pd
 from controllers.ControllerMostProfitableProducts import ControllerMostProfitableProducts
 from models.PlotMostProfitableProducts import PlotMostProfitableProducts
 
-def test_get_most_profitable_products():
+def test_get_most_profitable_products(session):
     try:
+        controller = ControllerMostProfitableProducts(session)
         year = int(input("Ingrese el año a consultar: "))
         is_limited = input("¿Desea limitar el número de productos a mostrar? (s/n): ")
         
@@ -12,7 +13,6 @@ def test_get_most_profitable_products():
         else:
             limit = None
 
-        controller = ControllerMostProfitableProducts()
         df = controller.get_most_profitable_products(year, limit)
         print(df)
         print("\n")
