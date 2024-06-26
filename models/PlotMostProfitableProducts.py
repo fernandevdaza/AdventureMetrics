@@ -16,13 +16,13 @@ class PlotMostProfitableProducts (SalesPlotter):
                 print("No hay datos para mostrar.")
                 return None
             
-            total_revenue_sum = df_copy['total_revenue'].sum()
+            total_revenue_sum = df_copy['Ingresos Totales'].sum()
             
-            df_copy.loc[:, 'percentage'] = (df_copy['total_revenue'] / total_revenue_sum) * 100
+            df_copy.loc[:, 'percentage'] = (df_copy['Ingresos Totales'] / total_revenue_sum) * 100
 
             fig, ax = plt.subplots(figsize=(12, 8))
             wedges, texts, autotexts = ax.pie(df_copy['percentage'], 
-                                              labels=df_copy['product_name'], 
+                                              labels=df_copy['Nombre del Producto'], 
                                               autopct='%1.1f%%', 
                                               startangle=140,
                                               pctdistance=0.85)
@@ -35,7 +35,7 @@ class PlotMostProfitableProducts (SalesPlotter):
             plt.setp(autotexts, size=8, weight="bold")
             plt.setp(texts, size=8)
 
-            ax.legend(wedges, df_copy['product_name'],
+            ax.legend(wedges, df_copy['Nombre del Producto'],
                       title="Productos",
                       loc="center left",
                       bbox_to_anchor=(1.2, 0.5))

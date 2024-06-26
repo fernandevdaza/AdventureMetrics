@@ -42,6 +42,7 @@ class ReportBestSellingProducts(SalesReport):
 
 
         df = pd.DataFrame(results, columns=['productid', 'name', 'total'])
+        df = df.rename(columns={'productid': 'ID Producto', 'name': 'Nombre', 'total': 'Total Vendido'})
         return df
     
     def save_to_excel(self, df, name):

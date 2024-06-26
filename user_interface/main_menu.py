@@ -2,17 +2,15 @@ import os
 from user_interface.ui_seasonal_trends import ui_seasonal_trends
 from user_interface.ui_best_selling_products import ui_best_selling_products
 from user_interface.ui_most_profitable_products import ui_most_profitable_products
+from user_interface.clear_util import clear
 def main_menu(session):
     while True:
-        print(r"""
- ________  ________  ___      ___ _______   ________   _________  ___  ___  ________  _______           _____ ______   _______  _________  ________  ___  ________  ________      
-|\   __  \|\   ___ \|\  \    /  /|\  ___ \ |\   ___  \|\___   ___\\  \|\  \|\   __  \|\  ___ \         |\   _ \  _   \|\  ___ \|\___   ___\\   __  \|\  \|\   ____\|\   ____\     
-\ \  \|\  \ \  \_|\ \ \  \  /  / | \   __/|\ \  \\ \  \|___ \  \_\ \  \\\  \ \  \|\  \ \   __/|        \ \  \\\__\ \  \ \   __/\|___ \  \_\ \  \|\  \ \  \ \  \___|\ \  \___|_    
- \ \   __  \ \  \ \\ \ \  \/  / / \ \  \_|/_\ \  \\ \  \   \ \  \ \ \  \\\  \ \   _  _\ \  \_|/__       \ \  \\|__| \  \ \  \_|/__  \ \  \ \ \   _  _\ \  \ \  \    \ \_____  \   
-  \ \  \ \  \ \  \_\\ \ \    / /   \ \  \_|\ \ \  \\ \  \   \ \  \ \ \  \\\  \ \  \\  \\ \  \_|\ \       \ \  \    \ \  \ \  \_|\ \  \ \  \ \ \  \\  \\ \  \ \  \____\|____|\  \  
-   \ \__\ \__\ \_______\ \__/ /     \ \_______\ \__\\ \__\   \ \__\ \ \_______\ \__\\ _\\ \_______\       \ \__\    \ \__\ \_______\  \ \__\ \ \__\\ _\\ \__\ \_______\____\_\  \ 
-    \|__|\|__|\|_______|\|__|/       \|_______|\|__| \|__|    \|__|  \|_______|\|__|\|__|\|_______|        \|__|     \|__|\|_______|   \|__|  \|__|\|__|\|__|\|_______|\_________\
-                                                                                                                                                                       \|_________|                                                                                                                                                                                                                                                                                                                                                                   
+        print(r"""                                                                      
+     _       _                 _                    __  __      _        _          
+    / \   __| |_   _____ _ __ | |_ _   _ _ __ ___  |  \/  | ___| |_ _ __(_) ___ ___ 
+   / _ \ / _` \ \ / / _ \ '_ \| __| | | | '__/ _ \ | |\/| |/ _ \ __| '__| |/ __/ __|
+  / ___ \ (_| |\ V /  __/ | | | |_| |_| | | |  __/ | |  | |  __/ |_| |  | | (__\__ \
+ /_/   \_\__,_| \_/ \___|_| |_|\__|\__,_|_|  \___| |_|  |_|\___|\__|_|  |_|\___|___/                                                                                                                                        
         """)
         print("\n")
         print("Bienvenido!")    
@@ -35,11 +33,10 @@ def main_menu(session):
         elif option == "3":
             clear()
             ui_most_profitable_products(session)
+            clear()
         elif option == "4":
             print("Saliendo del programa...")
             break
         else:
             print("Opción no válida. Por favor, seleccione una opción válida.")
     
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')

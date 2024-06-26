@@ -24,11 +24,11 @@ class PlotBestSellingProducts(SalesPlotter):
         fig, ax = plt.subplots(figsize=(12, 6))
         
         # Create the bar plot
-        bars = ax.bar(range(len(df)), df['total'], color='skyblue')
+        bars = ax.bar(range(len(df)), df['Total Vendido'], color='skyblue')
         
         # Set the x-axis ticks and labels
         ax.set_xticks(range(len(df)))
-        ax.set_xticklabels(df['name'], rotation=45, ha='right')
+        ax.set_xticklabels(df['Nombre'], rotation=45, ha='right')
 
         # Adjust the subplot to make room for the rotated labels
         plt.subplots_adjust(bottom=0.2)

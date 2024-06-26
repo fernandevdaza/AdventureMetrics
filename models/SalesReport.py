@@ -6,7 +6,6 @@ class SalesReport:
 
     def __init__(self, session):
         self.session = session
-        self.session.execute(text("SET lc_time = 'es_ES.UTF-8'"))
 
     def get_date_range(self):
         """
@@ -62,4 +61,4 @@ class SalesReport:
 
     
     def close(self):
-        self.session.close()
+        pass

@@ -38,7 +38,7 @@ class ReportMostProfitableProducts(SalesReport):
             results = query.all()
 
             df = pd.DataFrame(results, columns=['product_name', 'total_revenue'])
-            
+            df = df.rename(columns={'product_name': 'Nombre del Producto', 'total_revenue': 'Ingresos Totales'})
             
             return df
         except Exception as e:

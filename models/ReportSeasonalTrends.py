@@ -53,6 +53,9 @@ class ReportSeasonalTrends(SalesReport):
             if limit:
                 df = df.groupby('quarter').head(limit).reset_index(drop=True)
             
+            df = df.rename(columns={'quarter': 'Trimestre', 'product_name': 'Nombre del Producto', 'total_quantity': 'Cantidad Total'})
+
+
             return df
 
         except Exception as e:

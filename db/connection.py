@@ -3,9 +3,11 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from dotenv import dotenv_values
 from contextlib import contextmanager
+from sqlalchemy import text
 
 
 config = dotenv_values(".env")
+print("Iniciando Sesion... un momento por favor")
 
 DATABASE_URI = config.get("DATABASE_URI")
 
@@ -24,6 +26,7 @@ Session = sessionmaker(autoflush=False, bind=engine)
 @contextmanager
 def get_session():
     session = Session()
+    session.execute(text("SET lc_time = 'es_ES.UTF-8'"))
     try:
         yield session
     finally:
