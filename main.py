@@ -1,6 +1,4 @@
-from tests.test_get_seasonal_trends import test_get_seasonal_trends
-from tests.test_get_best_selling_products import test_get_best_selling_products
 from db.connection import get_session
+from user_interface.main_menu import main_menu
 with get_session() as session:
-    test_get_seasonal_trends(session)
-    test_get_best_selling_products(session)
+    main_menu(session)
