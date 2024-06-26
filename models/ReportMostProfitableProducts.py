@@ -37,7 +37,7 @@ class ReportMostProfitableProducts(SalesReport):
 
             results = query.all()
 
-            df = pd.DataFrame(results, columns=['product_name', 'total_revenue'])
+            df = pd.DataFrame(results, columns=['Producto', 'Total_ganancias'])
             
             
             return df

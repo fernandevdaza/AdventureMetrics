@@ -48,7 +48,7 @@ class ReportSeasonalTrends(SalesReport):
 
             results = query.all()
 
-            df = pd.DataFrame(results, columns=['quarter', 'product_name', 'total_quantity'])
+            df = pd.DataFrame(results, columns=['Trimestre', 'Producto', 'Cantidad_total'])
             
             if limit:
                 df = df.groupby('quarter').head(limit).reset_index(drop=True)

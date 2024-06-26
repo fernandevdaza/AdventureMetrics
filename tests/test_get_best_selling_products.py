@@ -1,7 +1,7 @@
 import pandas as pd
 from controllers.ControllerBestSellingProducts import ControllerBestSellingProducts
+from controllers.ControllerPlotBestSellingProducts import ControllerPlotBestSellingProducts
 from models.PlotBestSellingProducts import PlotBestSellingProducts
-
 def test_get_best_selling_products(session):
     try:
         controller = ControllerBestSellingProducts(session)
@@ -29,9 +29,17 @@ def test_get_best_selling_products(session):
         print("\n")
         show_plot = input("¿Desea mostrar el gráfico de tendencias trimestrales? (s/n): ")
         if show_plot.lower() == 's':
-            limit = int(input("Ingrese el número de productos a mostrar en el gráfico (Max: 20): "))
-            plotter = PlotBestSellingProducts()
-            plotter.plot_best_selling_products(df, year, limit)
+            limited = None
+            if limit == None:
+                limited = int(input("Ingrese el número de productos a mostrar en el gráfico (Max: 10): "))
+            plotter = ControllerPlotBestSellingProducts(PlotBestSellingProducts)
+            plot = plotter.plot_best_selling_products(df, year, limited)
+            plot.show()
+            save_plot = input("¿Desea guardar el gráfico en un archivo? (s/n): ")
+            if save_plot.lower() == 's' and plot is not None:
+                plotter.save_plot(plot, 'best_selling_products')
+            else:
+                pass
         else:
             return
     except ValueError as e:

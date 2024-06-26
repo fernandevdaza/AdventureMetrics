@@ -41,7 +41,7 @@ class ReportBestSellingProducts(SalesReport):
         results = query.all()
 
 
-        df = pd.DataFrame(results, columns=['productid', 'name', 'total'])
+        df = pd.DataFrame(results, columns=['Producto', 'Total_vendido'])
         return df
     
     def save_to_excel(self, df, name):
