@@ -16,12 +16,12 @@ class ControllerBestSellingProducts(SalesReportController):
         :return: DataFrame con los productos más vendidos.
         """
         if not self._is_valid_date(year):
-            raise ValueError("El año/trimestre proporcionado no es válido o no se encuentra en la base de datos.")
+            raise Exception("El año/trimestre proporcionado no es válido o no se encuentra en la base de datos.")
 
         df = self.report_model.get_best_selling_products(year, limit)
         
         if df.empty:
-            raise ValueError("No se encontraron productos vendidos para el año especificado.")
+            raise Exception("No se encontraron productos vendidos para el año especificado.")
         
         return df
     

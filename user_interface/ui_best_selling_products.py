@@ -5,8 +5,6 @@ from user_interface.clear_util import clear
 def ui_best_selling_products(session):
     while True:
         try:
-            print("Cargando...")
-            clear()
             controller = ControllerBestSellingProducts(session)
             print(r"""
                              _ _     _          
@@ -57,6 +55,7 @@ def ui_best_selling_products(session):
                     raise ValueError("Opción no válida.")   
             print("\n")
             plot_best_selling_products(df, year, limit)
+            clear()
         except ValueError as e:
             clear()
             print(f"Valor inválido, por favor inténtelo de nuevo")

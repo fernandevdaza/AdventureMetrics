@@ -40,7 +40,6 @@ class PlotMostProfitableProducts (SalesPlotter):
                       loc="center left",
                       bbox_to_anchor=(1.2, 0.5))
 
-            # Adjust the layout
             plt.tight_layout()
             plt.subplots_adjust(right=0.75)
 

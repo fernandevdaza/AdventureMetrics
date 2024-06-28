@@ -7,6 +7,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 reports
+run_app.py
 plots
 conectar.bat
 # C extensions

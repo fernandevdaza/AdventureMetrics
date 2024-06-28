@@ -6,9 +6,7 @@ from user_interface.clear_util import clear
 def ui_most_profitable_products(session):
     while True:
         try:
-            print("Cargando...")
             controller = ControllerMostProfitableProducts(session)
-            clear()
             print(r"""
                                               _           
      _      __ _  __ _ _ __   __ _ _ __   ___(_) __ _ ___ 
@@ -59,6 +57,7 @@ def ui_most_profitable_products(session):
                     raise ValueError("Opción no válida.")   
             print("\n")
             plot_most_profitable_products(df, year, limit)
+            clear()
         except ValueError as e:
             clear()
             print(f"Valor inválido, por favor inténtelo de nuevo")

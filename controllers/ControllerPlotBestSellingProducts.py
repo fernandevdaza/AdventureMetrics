@@ -20,7 +20,7 @@ class ControllerPlotBestSellingProducts(PlotController):
         :return: None
         """
         if not self._is_valid_limit(limit):
-            raise ValueError("El límite proporcionado no es válido. Debe ser un número entero menor o igual a 10.")
+            raise Exception("El límite proporcionado no es válido. Debe ser un número entero menor o igual a 10.")
         return self.plot_model.plot_best_selling_products(df, year, limit)
     
     def limit_rows(self, df, limit):

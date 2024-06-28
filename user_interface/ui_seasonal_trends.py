@@ -6,8 +6,6 @@ from user_interface.clear_util import clear
 def ui_seasonal_trends(session):
     while True:
         try:
-            print("Cargando...")
-            clear()
             controller = ControllerSeasonalTrends(session)
             print(r"""
   _____              _                 _             _____     _             _                   _           
@@ -66,12 +64,13 @@ def ui_seasonal_trends(session):
 
             print("\n")
             plot_seasonal_trends(df, year, quarter, limit)
+            clear()
         except ValueError as e:
             clear()
             print(f"Valor inválido, por favor inténtelo de nuevo")
         except Exception as e:
             clear()
-            print(f"Se produjo un error")
+            print(f"Se produjo un error: {e}")
         finally:
             if controller is not None:
                 controller.close()

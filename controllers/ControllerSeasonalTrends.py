@@ -16,12 +16,12 @@ class ControllerSeasonalTrends(SalesReportController):
             :return: DataFrame con las tendencias estacionales.
             """
             if not self._is_valid_date(year):
-                raise ValueError("El año/trimestre proporcionado no es válido o no se encuentra en la base de datos.")
+                raise Exception("El año/trimestre proporcionado no es válido o no se encuentra en la base de datos.")
             
             df = self.report_model.get_seasonal_trends_by_quarter(year, quarter, limit)
             
             if df.empty:
-                raise ValueError("No se encontraron productos vendidos para el año especificado.")
+                raise Exception("No se encontraron productos vendidos para el año especificado.")
             
             return df
         
